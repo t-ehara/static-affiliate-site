@@ -1,22 +1,22 @@
 <head>
   <!-- ここに成果地点タグを埋め込む -->
   <script>
-    const rmtConversion_omnizJ = () => {
-      const RMT_AD_ID = 'omnizJ'
+    const rmtConversion_y2Giav = () => {
+      const RMT_AD_ID = 'y2Giav'
       const RMT_AD_ID_KEY = '_rmt_ad_id_'
       const RMT_SID_KEY = '_rmt_sid_'
       const kvPairsFromCookie = () => {
         // Cookie Data
-        const kvs = document.cookie.split('; ').map((_kvs) => _kvs.split('='))
-        if (Object.keys(kvs).length < 2) return null
+        const kvs = document.cookie.split('; ').map((_kvs) => _kvs.split('=')).filter((_kvs) => _kvs[0].startsWith('_rmt_'))
+        if (Object.keys(kvs).length < 2) return {}
         const kvPairs = Object.fromEntries(kvs)
         return kvPairs
       }
       const kvPairsFromLocalStorage = () => {
         // localStorage Data
-        const lsKeys = Object.keys(localStorage)
+        const lsKeys = Object.keys(localStorage).filter((key) => key.startsWith('_rmt_'))
         const kvs = lsKeys.map((key) => [key, localStorage.getItem(key)])
-        if (Object.keys(kvs).length < 2) return null
+        if (Object.keys(kvs).length < 2) return {}
         const kvPairs = Object.fromEntries(kvs)
         return kvPairs
       }
@@ -27,17 +27,18 @@
         document.cookie = `${RMT_SID_KEY}${targetAdId}=; max-age=0; path=/;`
         // remove RMT_AD_ID_KEY localStorage data
         localStorage.removeItem(`${RMT_AD_ID_KEY}${targetAdId}`)
-        // remove RMT_SID_KEY Cookie
+        // remove RMT_SID_KEY localStorage data
         localStorage.removeItem(`${RMT_SID_KEY}${targetAdId}`)
       }
       // Main Logic
-      const kvPairs = kvPairsFromCookie() || kvPairsFromLocalStorage() || {}
+      const cookieKvPairs = kvPairsFromCookie()
+      const localStorageKvPairs = kvPairsFromLocalStorage()
       const adId = RMT_AD_ID
-      const rmtAdId = kvPairs[`${RMT_AD_ID_KEY}${adId}`]
-      const rmtSid = kvPairs[`${RMT_SID_KEY}${adId}`]
+      const rmtAdId = cookieKvPairs[`${RMT_AD_ID_KEY}${adId}`] || localStorageKvPairs[`${RMT_AD_ID_KEY}${adId}`]
+      const rmtSid = cookieKvPairs[`${RMT_SID_KEY}${adId}`] || localStorageKvPairs[`${RMT_SID_KEY}${adId}`]
       const cooperationSite = "other"
       const params = new URLSearchParams({ rmt_ad_id: rmtAdId, rmt_sid: rmtSid, cooperation_site: cooperationSite })
-      const url = 'https://stg-entry-api.recommect.com/v1/entry/advertisements/omnizJ/conversion'
+      const url = 'https://stg-entry-api.recommect.com/v1/entry/advertisements/y2Giav/conversion'
       const xhr = new XMLHttpRequest()
       xhr.open('POST', url)
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -49,7 +50,7 @@
         }
       }
     }
-    rmtConversion_omnizJ()
+    rmtConversion_y2Giav()
     </script>
     <script>
       const rmtConversion_y7Yin6 = () => {
