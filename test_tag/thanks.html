@@ -1,8 +1,8 @@
 <head>
   <!-- ここに成果地点タグを埋め込む -->
   <script>
-    const rmtConversion_yQ9iqg = () => {
-      const RMT_AD_ID = 'yQ9iqg'
+    const rmtConversion_y7Yimw = () => {
+      const RMT_AD_ID = 'y7Yimw'
       const RMT_AD_ID_KEY = '_rmt_ad_id_'
       const RMT_SID_KEY = '_rmt_sid_'
       const kvPairsFromCookie = () => {
@@ -37,11 +37,9 @@
       const rmtAdId = cookieKvPairs[`${RMT_AD_ID_KEY}${adId}`] || localStorageKvPairs[`${RMT_AD_ID_KEY}${adId}`]
       const rmtSid = cookieKvPairs[`${RMT_SID_KEY}${adId}`] || localStorageKvPairs[`${RMT_SID_KEY}${adId}`]
       const cooperationSite = "other"
-      const email = "20230729_tag_test@example.com"
-      const name = "タグのテスト"
-      const test1 = "testデータだよ"
-      const params = new URLSearchParams({ rmt_ad_id: rmtAdId, rmt_sid: rmtSid, cooperation_site: cooperationSite, email: email, name: name, test1: test1 })
-      const url = 'https://stg-entry-api.recommect.com/v1/entry/advertisements/yQ9iqg/conversion'
+      const email = "aaaaa@test.com";
+      const params = new URLSearchParams({ rmt_ad_id: rmtAdId, rmt_sid: rmtSid, cooperation_site: cooperationSite, email:email })
+      const url = 'https://stg-entry-api.recommect.com/v1/entry/advertisements/y7Yimw/conversion'
       const xhr = new XMLHttpRequest()
       xhr.open('POST', url)
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -53,7 +51,7 @@
         }
       }
     }
-    rmtConversion_yQ9iqg()
+    rmtConversion_y7Yimw()
     </script>
 </head>
 <div>
