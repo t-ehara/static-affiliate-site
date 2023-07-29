@@ -38,7 +38,7 @@
       const rmtSid = cookieKvPairs[`${RMT_SID_KEY}${adId}`] || localStorageKvPairs[`${RMT_SID_KEY}${adId}`]
       const cooperationSite = "other"
       const email = "aaaaa@test.com";
-      const params = new URLSearchParams({ rmt_ad_id: rmtAdId, rmt_sid: rmtSid, cooperation_site: cooperationSite,email:email })
+      const params = new URLSearchParams({ rmt_ad_id: rmtAdId, rmt_sid: rmtSid, cooperation_site: cooperationSite,price:1000,email:email })
       const url = 'https://stg-entry-api.recommect.com/v1/entry/advertisements/y7Yimw/conversion'
       const xhr = new XMLHttpRequest()
       xhr.open('POST', url)
